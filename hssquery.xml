@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <link href="http://arxiv.org/api/query?search_query%3Dall%3A1212.3563%26id_list%3D%26start%3D0%26max_results%3D1" rel="self" type="application/atom+xml"/>
+  <title type="html">ArXiv Query: search_query=all:1212.3563&amp;id_list=&amp;start=0&amp;max_results=1</title>
+  <id>http://arxiv.org/api/NJUYXgihGynJVEDGrn6yijLrzEM</id>
+  <updated>2019-11-17T00:00:00-05:00</updated>
+  <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">4</opensearch:totalResults>
+  <opensearch:startIndex xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">0</opensearch:startIndex>
+  <opensearch:itemsPerPage xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">1</opensearch:itemsPerPage>
+  <entry>
+    <id>http://arxiv.org/abs/1212.3563v1</id>
+    <updated>2012-12-14T18:52:11Z</updated>
+    <published>2012-12-14T18:52:11Z</published>
+    <title>Higher Segal spaces I</title>
+    <summary>  This is the first paper in a series on new higher categorical structures
+called higher Segal spaces. For every d &gt; 0, we introduce the notion of a
+d-Segal space which is a simplicial space satisfying locality conditions
+related to triangulations of cyclic polytopes of dimension d. In the case d=1,
+we recover Rezk's theory of Segal spaces. The present paper focuses on 2-Segal
+spaces. The starting point of the theory is the observation that Hall algebras,
+as previously studied, are only the shadow of a much richer structure governed
+by a system of higher coherences captured in the datum of a 2-Segal space. This
+2-Segal space is given by Waldhausen's S-construction, a simplicial space
+familiar in algebraic K-theory. Other examples of 2-Segal spaces arise
+naturally in classical topics such as Hecke algebras, cyclic bar constructions,
+configuration spaces of flags, solutions of the pentagon equation, and mapping
+class groups.
+</summary>
+    <author>
+      <name>Tobias Dyckerhoff</name>
+    </author>
+    <author>
+      <name>Mikhail Kapranov</name>
+    </author>
+    <arxiv:comment xmlns:arxiv="http://arxiv.org/schemas/atom">221 pages</arxiv:comment>
+    <link href="http://arxiv.org/abs/1212.3563v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1212.3563v1" rel="related" type="application/pdf"/>
+    <arxiv:primary_category xmlns:arxiv="http://arxiv.org/schemas/atom" term="math.AT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.AT" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.AG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math.CT" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>
