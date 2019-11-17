@@ -1,0 +1,49 @@
+#! /usr/bin/python
+
+import sqlite3
+import argparse as ap
+
+parser = ap.ArgumentParser(description="Search textbook database")
+
+parser.add_argument(
+        '-a',
+        dest='author_keyword',
+        type=str,
+        help="Author")
+
+parser.add_argument(
+        '-t',
+        dest='title_keyword',
+        type=str,
+        help="Title")
+
+author_keyword = None
+title_keyword = None
+
+args = parser.parse_args()
+
+conn = sqlite3.connect('/home/angus/programming/tbsearch/mathdoc.db')
+c = conn.cursor()
+
+search_stem = "SELECT author, title, location FROM textbooks WHERE "
+
+def read_from_db():
+    search_string = None
+    
+    if args.title_keyword and args.author_keyword:
+        search_string = search_stem + "author LIKE '%" + args.author_keyword + "%' AND title LIKE '%" + args.title_keyword + "%'"
+    elif args.author_keyword:
+        search_string = search_stem + "author LIKE '%" + args.author_keyword + "%'"
+    else:
+        search_string = search_stem + "title LIKE '%" + args.title_keyword + "%'"
+    if search_string:
+        c.execute(search_string)
+    for row in c.fetchall():
+        print(row[0] + ', ' + row[1])
+        print(row[2])
+        print("")
+
+read_from_db()
+
+c.close()
+conn.close()
