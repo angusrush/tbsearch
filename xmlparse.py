@@ -1,17 +1,41 @@
-import xml.etree.ElementTree as ET
-from urllib.request import urlopen
+import urllib
 import feedparser
 
-url = 'http://export.arxiv.org/api/query?search_query=all:1212.3563&start=0&max_results=1'
+# Base api query url
+base_url = 'http://export.arxiv.org/api/query?';
 
-tree = ET.parse('hssquery.xml')
-root = tree.getroot()
+# Search parameters
+search_query = '1212.3563' 
+start = 0                     # retreive the first result
+max_results = 1
 
-#data = urlopen(url).read()
-#tree = ET.fromstring(data)
+query = 'id_list=%s&start=%i&max_results=%i' % (search_query, start, max_results)
 
-for author in root.findall('name'): 
-    print(author.text)
+# Opensearch metadata such as totalResults, startIndex, 
+# and itemsPerPage live in the opensearch namespase.
+# Some entry metadata lives in the arXiv namespace.
+# This is a hack to expose both of these namespaces in
+# feedparser v4.1
+feedparser._FeedParserMixin.namespaces['http://a9.com/-/spec/opensearch/1.1/'] = 'opensearch'
+feedparser._FeedParserMixin.namespaces['http://arxiv.org/schemas/atom'] = 'arxiv'
 
+# perform a GET request using the base_url and query
+response = urllib.request.urlopen(base_url+query).read()
 
+# parse the response using feedparser
+feed = feedparser.parse(response)
+
+for entry in feed.entries:
+    authors = ';'.join(author.name for author in entry.authors)
+    print(entry.authors)
+
+    title = entry.title
+    print(title)
+
+    for link in entry.links:
+        if link.rel == 'alternate':
+            print('abs page link: %s' % link.href)
+        elif link.title == 'pdf':
+            pdf_link = link.href
+            print("pdf link: " + pdf_link)
 
