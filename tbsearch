@@ -25,7 +25,7 @@ args = parser.parse_args()
 conn = sqlite3.connect('/home/angus/programming/tbsearch/mathdoc.db')
 c = conn.cursor()
 
-search_stem = "SELECT author, title, location FROM textbooks WHERE "
+search_stem = "SELECT title, author, location FROM textbooks WHERE "
 
 def read_from_db():
     search_string = None
@@ -39,7 +39,8 @@ def read_from_db():
     if search_string:
         c.execute(search_string)
     for row in c.fetchall():
-        print(row[0] + ', ' + row[1])
+        print(row[0])
+        print(row[1])
         print(row[2])
         print("")
 
