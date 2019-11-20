@@ -1,13 +1,11 @@
 import sqlite3
 
-conn = sqlite3.connect('mathdoc.db')
-c = conn.cursor()
-
 def enter_tb(title, author, location):
     c.execute("INSERT INTO textbooks (title, author, location) VALUES (?, ?, ?)",
             (title, author, location))
     conn.commit()
 
+# This doesn't work and I'm not sure why.
 def rename_author(oldname, newname):
     c.execute("UPDATE textbooks SET author = replace(author, ?, ?)",
             (oldname, newname))
@@ -39,7 +37,9 @@ def enter_data():
     conn.commit()
 
 
-rename_author("Lurie", "Jacob Lurie")
+conn = sqlite3.connect('mathdoc.db')
+c = conn.cursor()
+
 
 c.close()
 conn.close()
