@@ -3,6 +3,18 @@ import sqlite3
 conn = sqlite3.connect('mathdoc.db')
 c = conn.cursor()
 
+def enter_tb(title, author, location):
+    c.execute("INSERT INTO textbooks (title, author, location) VALUES (?, ?, ?)",
+            (title, author, location))
+    conn.commit()
+
+def rename_author(oldname, newname):
+    c.execute("UPDATE textbooks SET author = replace(author, ?, ?)",
+            (oldname, newname))
+
+    #c.execute("UPDATE textbooks SET author = replace(author, \"" + oldname + "\", \"" + newname +"\")")
+    conn.commit()
+
 def enter_data():
     fo = open("authors")
     lines = []
@@ -21,12 +33,13 @@ def enter_data():
             locations.append(lines[i])
 
     for i in range(len(authors)):
-        c.execute("INSERT INTO textbooks (name, author, location) VALUES (?, ?, ?)",
+        c.execute("INSERT INTO textbooks (title, author, location) VALUES (?, ?, ?)",
             (titles[i], authors[i], locations[i]))
 
     conn.commit()
 
-    enter_data()
+
+rename_author("Lurie", "Jacob Lurie")
 
 c.close()
 conn.close()
