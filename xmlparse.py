@@ -5,8 +5,8 @@ import feedparser
 base_url = 'http://export.arxiv.org/api/query?';
 
 # Search parameters
-search_query = '1212.3563' 
-start = 0                     # retreive the first result
+search_query = '1910.06223' 
+start = 0                     # retreive only the first result
 max_results = 1
 
 query = 'id_list=%s&start=%i&max_results=%i' % (search_query, start, max_results)
@@ -26,16 +26,15 @@ response = urllib.request.urlopen(base_url+query).read()
 feed = feedparser.parse(response)
 
 for entry in feed.entries:
-    authors = ';'.join(author.name for author in entry.authors)
-    print(entry.authors)
+    authors = ';'.join(author.name.split(' ')[-1] for author in entry.authors)
+    print(authors)
 
     title = entry.title
     print(title)
 
     for link in entry.links:
         if link.rel == 'alternate':
-            print('abs page link: %s' % link.href)
+            pass
         elif link.title == 'pdf':
             pdf_link = link.href
-            print("pdf link: " + pdf_link)
-
+            print(pdf_link)
