@@ -22,12 +22,15 @@ feedparser._FeedParserMixin.namespaces['http://arxiv.org/schemas/atom'] = 'arxiv
 # perform a GET request using the base_url and query
 response = urllib.request.urlopen(base_url+query).read()
 
+# What data do I need?
+# 1) An array with author's names
+
 # parse the response using feedparser
 feed = feedparser.parse(response)
 
 for entry in feed.entries:
-    authors = ';'.join(author.name.split(' ')[-1] for author in entry.authors)
-    print(authors)
+    #authors = ';'.join(author.name.split(' ')[-1] for author in entry.authors)
+    print(entry.authors)
 
     title = entry.title
     print(title)

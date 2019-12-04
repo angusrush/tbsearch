@@ -50,7 +50,7 @@ def enter_data():
 conn = sqlite3.connect('mathdoc.db')
 c = conn.cursor()
 
-#auto_enter("A Short Course on Infinity-categories", "Moritz Groth", "/home/angus/Short.pdf")
+auto_enter("Spectral Algebraic Geometry", "Jacob Lurie", "/home/angus/Downloads/SAG-rootfile.pdf")
 
 c.close()
 conn.close()
