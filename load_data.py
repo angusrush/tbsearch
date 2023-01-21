@@ -120,6 +120,6 @@ def enter_from_arxiv(id):
 def main():
 
     #enter_from_arxiv('0708.2832')
-    #auto_enter("Model Categories and Their Localizations", "Philip Hirschhorn", "/home/angus/Downloads/hirschhornloc.pdf")
+    auto_enter("Solutions_Casella_Berger", "George Casella, Roger Berger", "/home/angus/Downloads/STAT723-W10-LEC1-Publisher's-Solution-to-All-Problems-in-Text.pdf")
 
 main()
